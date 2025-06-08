@@ -9,27 +9,7 @@ Welcome to CodePod! This is a compact web application I built to compile and run
 *   **Standard I/O:** Provides a way to give standard input to programs and view standard output and error streams.
 *   **Dockerized:** Both the frontend and backend are containerized for consistent environments and simplified deployment.
 
-## Project Structure
 
-code-pod/
-├── backend/
-│   ├── app/
-│   │   ├── main.py
-│   │   └── routers/compile_router.py
-│   ├── Dockerfile
-│   ├── requirements.txt
-│   └── ... (other backend files)
-├── frontend/
-│   ├── public/
-│   ├── src/
-│   │   ├── App.js
-│   │   ├── App.css
-│   │   └── ... (other frontend files)
-│   ├── Dockerfile
-│   ├── package.json
-│   └── ...
-├── docker-compose.yml
-└── README.md
 
 ## Getting Started Locally
 
