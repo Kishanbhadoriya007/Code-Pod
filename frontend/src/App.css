@@ -1,0 +1,191 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin: 0;
+  background-color: #f0f2f5;
+  color: #333;
+  line-height: 1.6;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.App-header {
+  background-color: #20232a; /* Darker shade */
+  padding: 15px 25px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.App-header h1 {
+  margin: 0;
+  font-size: 1.8em;
+  font-weight: 600;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.controls label {
+  font-size: 0.9em;
+  color: #f0f0f0;
+}
+
+.controls select, .controls button {
+  padding: 8px 15px;
+  font-size: 0.9em;
+  border-radius: 5px;
+  border: 1px solid #555;
+  background-color: #3a3f4a;
+  color: white;
+  cursor: pointer;
+}
+
+.controls select:focus, .controls button:focus {
+  outline: none;
+  border-color: #61dafb;
+}
+
+.controls button {
+  background-color: #61dafb;
+  color: #20232a;
+  font-weight: bold;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.controls button:hover {
+  background-color: #52b8d8;
+}
+.controls button:active {
+  transform: translateY(1px);
+}
+
+.controls button:disabled {
+  background-color: #555;
+  color: #aaa;
+  cursor: not-allowed;
+}
+
+.main-content {
+  display: flex;
+  flex-grow: 1;
+  padding: 10px;
+  gap: 10px;
+  overflow: hidden; /* Prevent layout shifts from scrollbars */
+}
+
+.editor-pane {
+  flex: 3; /* Takes more space */
+  display: flex; /* Needed for Monaco to fill height properly */
+  flex-direction: column;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden; /* Monaco handles its own scrolling */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.io-pane {
+  flex: 2; /* Takes less space */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stdin-container, .output-container {
+  background-color: #fff;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.stdin-container {
+ flex-basis: 30%; /* Approx 30% of io-pane height */
+ min-height: 120px;
+}
+
+.output-container {
+  flex-grow: 1; /* Takes remaining space */
+  min-height: 200px;
+}
+
+
+.stdin-container h3, .output-container h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
+
+.stdin-container textarea {
+  width: calc(100% - 20px); /* Account for padding */
+  padding: 10px;
+  font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+  font-size: 0.9em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  flex-grow: 1; /* Allows textarea to fill stdin-container */
+  min-height: 80px;
+}
+
+.console-output {
+  background-color: #1e1e1e; /* Match Monaco dark theme */
+  color: #d4d4d4;
+  padding: 15px;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+  font-size: 0.9em;
+  flex-grow: 1; /* Fill available space */
+  overflow-y: auto; /* Scroll for long output */
+  border: 1px solid #333;
+}
+
+.console-output.error-text {
+  color: #ff7b72; /* More visible error red */
+}
+
+.App-footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #e9ecef;
+  border-top: 1px solid #dee2e6;
+  font-size: 0.85em;
+  color: #495057;
+}
+.App-footer p {
+    margin: 5px 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+  }
+  .editor-pane, .io-pane {
+    flex: none; /* Reset flex grow/shrink/basis */
+    width: 100%;
+  }
+  .editor-pane {
+    height: 50vh; /* Or a fixed pixel value */
+  }
+  .App-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
